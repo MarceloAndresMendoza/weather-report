@@ -1,0 +1,42 @@
+---
+
+// Styles
+import "../assets/styles/global.css"; // Global styles across the site
+
+// Components
+import NavBar from "../components/NavBar.astro"; // Main Nav Bar
+// Scripts
+import "../assets/scripts/local.js";
+// Properties for this layout
+const { title } = Astro.props
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<title>{title}</title>
+	</head>
+	<body>
+        <div class="left-navbar-layout">
+            <NavBar title={title}/>
+		    <div class=""><slot /></div>
+        </div>
+	</body>
+</html>
+
+<script src="../assets/scripts/client.js">
+	// Client Side scripts on this file.
+</script>
+
+<style>
+    .left-navbar-layout {
+        display: flex;
+        flex-direction: row;
+		width: 100%;
+		background-color: green;
+    }
+</style>

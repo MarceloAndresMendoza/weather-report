@@ -1,0 +1,31 @@
+---
+// ========== NavBar ============
+const {title} = Astro.props;
+---
+
+<div class="navbar">
+    <h1>{title}</h1>
+    <p>Button here</p>
+    <p>Button here</p>
+    <p>Button here</p>
+</div>
+
+<style>
+    .navbar {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-background-dark);
+        height: 100vh;
+    }
+
+    .navbar * {
+        color: var(--color-foreground-dark);
+        margin-top: var(--margin-global);
+        margin-left: var(--margin-global);
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+</style>
