@@ -1,16 +1,17 @@
 <div class="chart">
     <canvas id="forecastChart"></canvas>
 </div>
+
 <script>
      const ctx = document.getElementById('forecastChart');
 
 new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['11:00', '15:00', '19:00', '23:00', '02:00', '06:00'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Tempreature of Today',
+      data: [12, 15, 23, 25, 22, 20],
       borderWidth: 1
     }]
   },
