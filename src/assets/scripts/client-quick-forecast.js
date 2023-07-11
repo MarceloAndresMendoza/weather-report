@@ -22,11 +22,11 @@ const getForecast = (lat, lon) => {
     
     function getGeolocation() {
         if ("geolocation" in navigator) {
+            document.getElementById('geolocation').innerHTML = "Geolocation available."
             navigator.geolocation.getCurrentPosition((position) => {
                 gotPosition(position.coords.latitude, position.coords.longitude);
             });
             // console.log('Geolocation available')
-            document.getElementById('geolocation').innerHTML = "Geolocation available."
         } else {
             // console.log('Geolocation NOT available')
             document.getElementById('geolocation').innerHTML = "Geolocation not available."
