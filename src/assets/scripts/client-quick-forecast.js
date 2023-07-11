@@ -36,7 +36,7 @@ const getForecast = (lat, lon) => {
     function gotPosition(lat, lon) {
         console.log('Got position:' + lat + ", " + lon);
         // console.log(lat + " " + lon);
-        document.getElementById('geolocation').innerHTML = lat.slice(0,3) + " - " + lon.slice(0,3);
+        document.getElementById('geolocation').innerHTML = lat.substring(0,3) + " - " + lon.substring(0,3);
     }
     
     const url = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${lon}&hourly=precipitation_probability&hourly=temperature_2m`;
