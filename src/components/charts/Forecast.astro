@@ -61,32 +61,42 @@ import loading from "../../assets/img/loading.gif";
           data.current_weather.temperature + " °C";
         document.getElementById("rain").innerHTML =
           data.hourly.precipitation_probability[1] + " %";
+        getForecastDataChart(data, 24);
         return data;
       });
   };
 
-  const ctx = document.getElementById("forecastChart");
+  const getForecastDataChart = (data, numberOfDataPoints) => {
+    // Initialize myData here
+    const myData = {
+      dataValues:"",
+      dataLabels:""
+    };
+    myData.dataValues = data.hourly.temperature_2m.slice(0, numberOfDataPoints);
+    myData.dataLabels = data.hourly.time.slice(0, numberOfDataPoints);
 
-  new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: ["Now", "2 hours", "4 hours", "6 hours", "8 hours", "10 hours"],
-      datasets: [
-        {
-          label: "Example data",
-          data: [12, 15, 23, 5, 2, -10],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
+        const ctx = document.getElementById("forecastChart");
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: myData.dataLabels,
+            datasets: [
+              {
+                label: "Temperature",
+                data: myData.dataValues,
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+  };
 
   getIP();
 </script>
