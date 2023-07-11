@@ -1,31 +1,92 @@
 ---
 // ========== NavBar ============
-const {title} = Astro.props;
+import logo from "../assets/img/logo-weather-transp.png";
+const { title } = Astro.props;
+// Get current pathname and select apropiate link to highlight it
+const pathname = new URL(Astro.request.url).pathname;
+function removeTrailingBackslash(str) {
+    if (str.endsWith("/")) {
+        return str.slice(0, str.length - 1);
+    }
+    return str;
+}
+const currentPath = removeTrailingBackslash(pathname); //.slice(1); // remove the first "/"
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <div class="navbar">
-    <h1>{title}</h1>
-    <p>→ Forecast</p>
-    <p>→ My Locations</p>
-    <p>→ Developer</p>
+    <div class="title">
+            <div class="logo">
+                <img src={logo} width=48 alt="">
+            </div>
+            <div class="title-text">
+                <h1 class="title-h1">{title}</h1>
+                <h5 class="title-h5">by MarceloAndresMendoza</h5>
+            </div>
+    </div>
+    <div class="links">
+        <a
+            class={currentPath + "/" == baseUrl ? "active" : ""}
+            href=`${baseUrl}`>→ Quick Forecast</a
+        >
+        <a
+            class={currentPath == baseUrl + "locations" ? "active" : ""}
+            href=`${baseUrl}locations`>→ My locations</a
+        >
+        <a
+            class={currentPath == baseUrl + "developer" ? "active" : ""}
+            href=`${baseUrl}developer`>→ Developer</a
+        >
+    </div>
 </div>
 
 <style>
     .navbar {
-        width: 300px;
         display: flex;
         flex-direction: column;
         background-color: var(--color-background-dark);
-        height: 100vh;
     }
 
     .navbar * {
         color: var(--color-foreground-dark);
-        margin-top: var(--margin-global);
-        margin-left: var(--margin-global);
     }
 
-    h1 {
+    .title {
+        margin: 0;
+        padding: 20px;
+        background-color: var(--color-background-middark);
+        display: flex;
+        gap: 5px;
+        height: 100px;
+    }
+
+    .title-h1 {
         font-size: 18px;
+        margin: 0;
+    }
+
+    .title-h5 {
+        margin: 0;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 0;
+        padding: 20px;
+    }
+
+    a:hover {
+        background-color: var(--color-accent-dark);
+    }
+
+    .active {
+        color: var(--color-foreground-normal);
+        background-color: var(--color-background-normal);
     }
 </style>

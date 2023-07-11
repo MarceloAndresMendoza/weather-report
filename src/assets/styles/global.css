@@ -9,13 +9,21 @@
 
 :root {
     /* Color theme */
-    --color-foreground-main: black;
+    --color-foreground-normal: rgb(25, 25, 25);
     --color-foreground-dark: white;
     --color-background-normal: white;
-    --color-background-dark: black;
+    --color-background-dark: rgb(25, 25, 25);
+    --color-background-middark: rgb(50, 50, 50);
     --color-accent-normal: rgb(240, 200, 0);
-    --color-accent-dark: rgb(255, 64, 0);
+    --color-accent-dark: rgb(133, 46, 17);
 
     --margin-global: 20px;
 }
 
+.global-content-title {
+    margin: var(--margin-global);
+}
+
+.global-hidden {
+    display: none;
+}
