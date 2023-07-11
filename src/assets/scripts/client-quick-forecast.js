@@ -17,6 +17,28 @@ const getIP = () => {
 };
 
 const getForecast = (lat, lon) => {
+    
+    getGeolocation();
+    
+    function getGeolocation() {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                gotPosition(position.coords.latitude, position.coords.longitude);
+            });
+            // console.log('Geolocation available')
+            document.getElementById('geolocation').innerHTML = "Geolocation available."
+        } else {
+            // console.log('Geolocation NOT available')
+            document.getElementById('geolocation').innerHTML = "Geolocation not available."
+        }
+    }
+    
+    function gotPosition(lat, lon) {
+        // console.log('Got position');
+        // console.log(lat + " " + lon);
+        document.getElementById('geolocation').innerHTML = lat.slice(0,3) + " - " + lon.slice(0,3);
+    }
+    
     const url = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${lon}&hourly=precipitation_probability&hourly=temperature_2m`;
     fetch(url)
         .then((response) => {
@@ -81,7 +103,7 @@ const getForecastDataChart = (data, numberOfDataPoints) => {
     const currentMonthName = monthName(myData.dataFullDateTimeLabels[0].slice(5, 7));
     document.getElementById('forecast-date').innerHTML = currentMonthName + "," + myData.dataFullDateTimeLabels[0].slice(8, 10);
 
-    getGeolocation();
+    
     
 };
 
@@ -96,22 +118,6 @@ function monthName(num) {
     return "Error: Not a valid number";
 }
 
-function getGeolocation() {
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            gotPosition(position.coords.latitude, position.coords.longitude);
-        });
-        console.log('Geolocation available')
-        /* geolocation is available */
-    } else {
-        console.log('Geolocation NOT available')
-        /* geolocation IS NOT available */
-    }
-}
 
-function gotPosition(lat, lon) {
-    console.log('Got position');
-    console.log(lat + " " + lon);
-}
 
 getIP();
