@@ -3,7 +3,8 @@ import loading from "../../assets/img/loading.gif";
 ---
 
 <div class="chart">
-  <canvas id="forecastChart" class="forecastChart"></canvas>
+  <canvas id="forecastChart" class="forecastChart global-hidden"></canvas>
+  <div class="loading" id="loading"><img src={loading} width="60" alt="" /></div>
   <div class="margin">
     <table>
       <tr>
@@ -69,23 +70,34 @@ import loading from "../../assets/img/loading.gif";
   const getForecastDataChart = (data, numberOfDataPoints) => {
     // Initialize myData here
     const myData = {
-      dataValues:"",
-      dataLabels:""
+      dataTempValues:"",
+      dataTimeLabels:"",
+      dataRainValues: ""
     };
-    myData.dataValues = data.hourly.temperature_2m.slice(0, numberOfDataPoints);
-    myData.dataLabels = data.hourly.time.slice(0, numberOfDataPoints);
+    myData.dataTempValues = data.hourly.temperature_2m.slice(0, numberOfDataPoints);
+    myData.dataTimeLabels = data.hourly.time.slice(0, numberOfDataPoints);
+    myData.dataRainValues = data.hourly.precipitation_probability.slice(0, numberOfDataPoints);
 
         const ctx = document.getElementById("forecastChart");
         new Chart(ctx, {
           type: "line",
           data: {
-            labels: myData.dataLabels,
+            labels: myData.dataTimeLabels,
             datasets: [
               {
                 label: "Temperature",
-                data: myData.dataValues,
-                borderWidth: 1,
+                data: myData.dataTempValues,
+                borderWidth: 3,
+                borderColor: '#ff9f40',
+                backgroundColor: '#cc7d20'
               },
+              {
+                label: "Rain chance %",
+                data: myData.dataRainValues,
+                borderWidth: 3,
+                borderColor: '#36a2eb',
+                backgroundColor: '#9BD0F5'
+              }
             ],
           },
           options: {
@@ -96,6 +108,7 @@ import loading from "../../assets/img/loading.gif";
             },
           },
         });
+        document.getElementById('loading').className = 'global-hidden';
   };
 
   getIP();
@@ -117,5 +130,10 @@ import loading from "../../assets/img/loading.gif";
 
   th {
     text-align: start;
+  }
+
+  .loading {
+    text-align: center;
+    margin: 40px;
   }
 </style>
