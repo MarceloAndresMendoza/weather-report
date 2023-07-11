@@ -5,10 +5,9 @@ import Forecast from "../components/charts/Forecast.astro";
 
 <MainLayout title="Quick WeatherReport">
 	<div class="global-content-title">
-		<h1 id="Title">Error: JS script not loaded</h1> 
-		<!-- Replaced via javascript for testing purposes -->
+		<h1 id="Title">Welcome</h1>
 		<h2>Weather report for your location</h2>
-		<p>Today, on your location based by ip</p>
+		<p>Forecast for <span id="forecast-date">--</span></p>
 	</div>
 	<div class="global-dashboards">
 		<div class="forecast">
@@ -16,3 +15,9 @@ import Forecast from "../components/charts/Forecast.astro";
 		</div>
 	</div>
 </MainLayout>
+
+<style>
+	#forecast-date {
+		font-weight: bold;
+	}
+</style>
