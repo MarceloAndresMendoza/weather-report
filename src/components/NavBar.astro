@@ -1,6 +1,9 @@
 ---
 // ========== NavBar ============
 import logo from "../assets/img/logo-weather-transp.png";
+import terminal from "../assets/img/dev-terminal.png";
+import location from "../assets/img/compass.png";
+import forecast from "../assets/img/forecast.png";
 const { title } = Astro.props;
 // Get current pathname and select apropiate link to highlight it
 const pathname = new URL(Astro.request.url).pathname;
@@ -16,27 +19,36 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <div class="navbar">
     <div class="title">
-            <div class="logo">
-                <img src={logo} width=48 alt="">
-            </div>
-            <div class="title-text">
-                <h1 class="title-h1">{title}</h1>
-                <h5 class="title-h5">by MarceloAndresMendoza</h5>
-            </div>
+        <div class="logo">
+            <img src={logo} width="48" alt="" />
+        </div>
+        <div class="title-text">
+            <h1 class="title-h1">{title}</h1>
+            <h5 class="title-h5">by MarceloAndresMendoza</h5>
+        </div>
     </div>
     <div class="links">
         <a
             class={currentPath + "/" == baseUrl ? "active" : ""}
-            href=`${baseUrl}`>→ Quick Forecast</a
+            href=`${baseUrl}`
         >
+            <span class="link-text">Quick Forecast</span>
+            <span class="link-img"><img src={forecast} width="90" /></span>
+        </a>
         <a
             class={currentPath == baseUrl + "locations" ? "active" : ""}
-            href=`${baseUrl}locations`>→ My locations</a
+            href=`${baseUrl}locations`
         >
+            <span class="link-text">My locations</span>
+            <span class="link-img"><img src={location} width="90" /></span>
+        </a>
         <a
             class={currentPath == baseUrl + "developer" ? "active" : ""}
-            href=`${baseUrl}developer`>→ README.md</a
+            href=`${baseUrl}developer`
         >
+            <span class="link-text">README.md</span>
+            <span class="link-img"><img src={terminal} width="90" /></span>
+        </a>
     </div>
 </div>
 
@@ -79,6 +91,10 @@ const baseUrl = import.meta.env.BASE_URL;
         text-decoration: none;
         margin: 0;
         padding: 20px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
     }
 
     a:hover {
@@ -87,7 +103,38 @@ const baseUrl = import.meta.env.BASE_URL;
     }
 
     .active {
-        color: var(--color-foreground-normal);
         background-color: var(--color-background-normal);
+    }
+    .active * {
+        color: var(--color-foreground-normal);
+    }
+
+    @media (min-width: 650px) {
+        .link-img img{
+            width: 50px;
+            height: 50px;
+        }
+        /* .link-text::before {
+            content: "→ ";
+        } */
+    }
+    @media (max-width: 650px) {
+        .links {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        a {
+            width: 33%;
+            text-align: center;
+            padding: 5px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .navbar {
+            background-color: rgb(240,240,240);
+        }
+        .link-text {
+            color: var(--color-foreground-normal);
+        }
     }
 </style>
