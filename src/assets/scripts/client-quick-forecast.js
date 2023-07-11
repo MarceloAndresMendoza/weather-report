@@ -97,11 +97,21 @@ function monthName(num) {
 }
 
 function getGeolocation() {
-    navigator.geolocation.watchPosition(showPosition);
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            gotPosition(position.coords.latitude, position.coords.longitude);
+        });
+        console.log('Geolocation available')
+        /* geolocation is available */
+    } else {
+        console.log('Geolocation NOT available')
+        /* geolocation IS NOT available */
+    }
 }
 
-function showPosition(position) {
-    alert(position.coords.latitude);
+function gotPosition(lat, lon) {
+    console.log('Got position');
+    console.log(lat + " " + lon);
 }
 
 getIP();
