@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 const devMode = import.meta.env.DEV;
-let siteURL = 'https://marceloandresmendoza.github.io/weather-report';
-let siteBase = '';
+let siteURL = 'https://marceloandresmendoza.github.io';
+let siteBase = 'weather-report';
 if (devMode) {
     siteURL = 'http://localhost:3000';
     siteBase = '';
