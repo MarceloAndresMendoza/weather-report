@@ -1,13 +1,14 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Forecast from "../components/charts/Forecast.astro";
+import loading from "../assets/img/loading.gif";
 ---
 
 <MainLayout title="Quick WeatherReport">
 	<div class="global-content-title">
 		<h1 id="Title">Welcome</h1>
-		<h2>Weather report for your location</h2>
-		<p>Forecast for <span id="forecast-date">--</span></p>
+		<h2>Weather forecast for your location</h2>
+		<p>Forecast for <span id="forecast-date"> <img src={loading} width="20" alt="" /></span></p>
 	</div>
 	<div class="global-dashboards">
 		<div class="forecast">
