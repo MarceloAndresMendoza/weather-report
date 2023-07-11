@@ -18,6 +18,8 @@
     --color-accent-dark: rgb(175, 25, 5);
 
     --margin-global: 20px;
+
+    --max-content-width: 700px;
 }
 
 .global-content-title {

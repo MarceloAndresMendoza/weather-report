@@ -32,8 +32,9 @@
 		<meta name="theme-color" content="#ffffff">
 
 		<title>Quick WeatherReport</title>
-	<link rel="stylesheet" href="/weather-report/astro/developer.50da288d.css" />
-<link rel="stylesheet" href="/weather-report/astro/index.d7120085.css" /><script type="module" src="/weather-report/astro/hoisted.fd68c89c.js"></script></head>
+	<link rel="stylesheet" href="/weather-report/astro/developer.ed6abebc.css" />
+<link rel="stylesheet" href="/weather-report/astro/index.0c75b764.css" /><script type="module">const l=()=>{fetch("https://ipapi.co/json/").then(e=>e.json()).then(e=>(document.getElementById("yourIP").innerHTML=e.ip,document.getElementById("yourLocation").innerHTML=e.city+", "+e.country_name,i(e.latitude,e.longitude),e))},i=(r,e)=>{const t=`https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${r}&longitude=${e}&hourly=precipitation_probability&hourly=temperature_2m`;fetch(t).then(a=>a.json()).then(a=>(document.getElementById("URL").innerHTML=t,document.getElementById("temp").innerHTML=a.current_weather.temperature+" °C",document.getElementById("rain").innerHTML=a.hourly.precipitation_probability[1]+" %",c(a,24),a))},c=(r,e)=>{const t={dataTempValues:"",dataFullDateTimeLabels:"",dataTimeLabels:"",dataRainValues:""};t.dataTempValues=r.hourly.temperature_2m.slice(0,e),t.dataFullDateTimeLabels=r.hourly.time.slice(0,e),t.dataTimeLabels=r.hourly.time.slice(0,e).map(o=>o.slice(11,16)),t.dataRainValues=r.hourly.precipitation_probability.slice(0,e);const a=document.getElementById("forecastChart");new Chart(a,{type:"line",data:{labels:t.dataTimeLabels,datasets:[{label:"Temperature",data:t.dataTempValues,borderWidth:3,borderColor:"#ff9f40",backgroundColor:"#cc7d20"},{label:"Rain chance %",data:t.dataRainValues,borderWidth:3,borderColor:"#36a2eb",backgroundColor:"#9BD0F5"}]},options:{scales:{y:{beginAtZero:!0}}}}),document.getElementById("loading").className="global-hidden";const n=s(t.dataFullDateTimeLabels[0].slice(5,7));document.getElementById("forecast-date").innerHTML=n+","+t.dataFullDateTimeLabels[0].slice(8,10)},u=["January","February","March","April","May","June","July","August","September","October","November","December"];function s(r){return r>0&&r<=12?u[r-1]:"Error: Not a valid number"}l();
+</script></head>
 	<body class="astro-OUAMJN2I">
 		<div class="main-layout astro-OUAMJN2I">
 			<div class="navbar astro-YMHDP2RL">
@@ -96,3 +97,4 @@
 	
 
 </body></html>
+
