@@ -8,6 +8,10 @@ import NavBar from "../components/NavBar.astro"; // Main Nav Bar
 import "../assets/scripts/local.js";
 // Properties for this layout
 const { title } = Astro.props;
+
+const buildMode = import.meta.env.PROD;
+let baseURLbuild = "";
+if (buildMode) { baseURLbuild = "https://marceloandresmendoza.github.io/weather-report/"}
 ---
 
 <html lang="en">
@@ -17,6 +21,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<!-- Favicon -->
+		<base href={baseURLbuild} />
 		<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
