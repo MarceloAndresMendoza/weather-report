@@ -47,8 +47,6 @@ const getForecastDataChart = (data, numberOfDataPoints) => {
     myData.dataTimeLabels = data.hourly.time.slice(0, numberOfDataPoints).map(timestring => timestring.slice(11, 16));
     myData.dataRainValues = data.hourly.precipitation_probability.slice(0, numberOfDataPoints);
 
-
-
     const ctx = document.getElementById("forecastChart");
     new Chart(ctx, {
         type: "line",
@@ -82,6 +80,9 @@ const getForecastDataChart = (data, numberOfDataPoints) => {
     document.getElementById('loading').className = 'global-hidden';
     const currentMonthName = monthName(myData.dataFullDateTimeLabels[0].slice(5, 7));
     document.getElementById('forecast-date').innerHTML = currentMonthName + "," + myData.dataFullDateTimeLabels[0].slice(8, 10);
+
+    getGeolocation();
+    
 };
 
 // Create an array of the 12 month names
@@ -93,6 +94,14 @@ function monthName(num) {
         return months[num - 1];
     }
     return "Error: Not a valid number";
+}
+
+function getGeolocation() {
+    navigator.geolocation.watchPosition(showPosition);
+}
+
+function showPosition(position) {
+    alert(position.coords.latitude);
 }
 
 getIP();
