@@ -34,7 +34,7 @@ const getForecast = (lat, lon) => {
     }
     
     function gotPosition(lat, lon) {
-        // console.log('Got position');
+        console.log('Got position:' + lat + ", " + lon);
         // console.log(lat + " " + lon);
         document.getElementById('geolocation').innerHTML = lat.slice(0,3) + " - " + lon.slice(0,3);
     }
