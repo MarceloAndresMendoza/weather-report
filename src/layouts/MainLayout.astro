@@ -1,5 +1,4 @@
 ---
-
 // Styles
 import "../assets/styles/global.css"; // Global styles across the site
 
@@ -8,7 +7,7 @@ import NavBar from "../components/NavBar.astro"; // Main Nav Bar
 // Scripts
 import "../assets/scripts/local.js";
 // Properties for this layout
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -18,13 +17,92 @@ const { title } = Astro.props
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<!-- Favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="57x57"
+			href="/favicon/apple-icon-57x57.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="60x60"
+			href="/favicon/apple-icon-60x60.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="72x72"
+			href="/favicon/apple-icon-72x72.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="76x76"
+			href="/favicon/apple-icon-76x76.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="114x114"
+			href="/favicon/apple-icon-114x114.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="120x120"
+			href="/favicon/apple-icon-120x120.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="144x144"
+			href="/favicon/apple-icon-144x144.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="152x152"
+			href="/favicon/apple-icon-152x152.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/favicon/apple-icon-180x180.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="192x192"
+			href="/favicon/android-icon-192x192.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="96x96"
+			href="/favicon/favicon-96x96.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="/favicon/manifest.json" />
+		<!-- WebApp capable -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-title" content="Categorizador K" />
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+		<meta name="theme-color" content="#ffffff" />
+
 		<title>{title}</title>
 	</head>
 	<body>
-        <div class="main-layout">
-            <NavBar class="nav-pane" title={title}/>
-		    <div class="content-pane"><slot /></div>
-        </div>
+		<div class="main-layout">
+			<NavBar class="nav-pane" title={title} />
+			<div class="content-pane"><slot /></div>
+		</div>
 	</body>
 </html>
 
@@ -35,9 +113,9 @@ const { title } = Astro.props
 <style>
 	.main-layout {
 		display: flex;
-        flex-direction: row;
+		flex-direction: row;
 		min-height: 100vh;
-    }
+	}
 	.nav-pane {
 		width: 300px;
 	}

@@ -1,3 +1,4 @@
+// Marcelo Andrés Mendoza 2023
 import { defineConfig } from 'astro/config';
 const devMode = import.meta.env.DEV;
 let siteURL = 'https://marceloandresmendoza.github.io';
