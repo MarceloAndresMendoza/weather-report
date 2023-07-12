@@ -17,28 +17,31 @@ const getIP = () => {
 };
 
 const getForecast = (lat, lon) => {
-    
+
     getGeolocation();
-    
+
     function getGeolocation() {
         if ("geolocation" in navigator) {
-            document.getElementById('geolocation').innerHTML = "Geolocation available."
+            // document.getElementById('geolocation').innerHTML = "Geolocation available."
             navigator.geolocation.getCurrentPosition((position) => {
                 gotPosition(position.coords.latitude, position.coords.longitude);
             });
             // console.log('Geolocation available')
         } else {
             // console.log('Geolocation NOT available')
-            document.getElementById('geolocation').innerHTML = "Geolocation not available."
+            document.getElementById('geolocation').innerHTML = "Geolocation not available or not allowed by user."
         }
     }
-    
-    function gotPosition(lat, lon) {
-        console.log('Got position:' + lat + ", " + lon);
+
+    function gotPosition(glat, glon) {
+        console.log('Got position:' + glat.toFixed(2) + ", " + glon.toFixed(2));
         // console.log(lat + " " + lon);
-        document.getElementById('geolocation').innerHTML = lat.substring(0,3) + " - " + lon.substring(0,3);
+        document.getElementById('geolocation').innerHTML = glat.toFixed(2) + ", " + glon.toFixed(2);
+        lat = glat;
+        lon = glon;
+        document.getElementById('yourLocationLabel').innerHTML = "Your precise location:";
     }
-    
+
     const url = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${lon}&hourly=precipitation_probability&hourly=temperature_2m`;
     fetch(url)
         .then((response) => {
@@ -103,8 +106,8 @@ const getForecastDataChart = (data, numberOfDataPoints) => {
     const currentMonthName = monthName(myData.dataFullDateTimeLabels[0].slice(5, 7));
     document.getElementById('forecast-date').innerHTML = currentMonthName + "," + myData.dataFullDateTimeLabels[0].slice(8, 10);
 
-    
-    
+
+
 };
 
 // Create an array of the 12 month names
