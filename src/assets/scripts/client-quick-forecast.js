@@ -27,7 +27,9 @@ const getForecast = (lat, lon) => {
             }, 10000);
             // document.getElementById('geolocation').innerHTML = "Geolocation available."
             navigator.geolocation.getCurrentPosition((position) => {
-                gotPosition(position.coords.latitude, position.coords.longitude);
+                if (gotPosition(position.coords.latitude, position.coords.longitude)) {
+                    clearTimeout(geoLocationTimeout);
+                }
             });
             // console.log('Geolocation available')
         } else {
@@ -43,7 +45,7 @@ const getForecast = (lat, lon) => {
         lat = glat;
         lon = glon;
         document.getElementById('yourLocationLabel').innerHTML = "Your precise location:";
-        clearTimeout(geoLocationTimeout);
+        return true;
     }
 
     const url = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${lon}&hourly=precipitation_probability&hourly=temperature_2m`;
