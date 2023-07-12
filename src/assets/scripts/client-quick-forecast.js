@@ -22,7 +22,9 @@ const getForecast = (lat, lon) => {
 
     function getGeolocation() {
         if ("geolocation" in navigator) {
-            setTimeout(geoLocationTimeout, 10000);
+            let geoLocationTimeout = setTimeout(() => {
+                document.getElementById('geolocation').innerHTML = "Couldn't get geolocation. Check permissions on your device."
+            }, 10000);
             // document.getElementById('geolocation').innerHTML = "Geolocation available."
             navigator.geolocation.getCurrentPosition((position) => {
                 gotPosition(position.coords.latitude, position.coords.longitude);
@@ -42,10 +44,6 @@ const getForecast = (lat, lon) => {
         lon = glon;
         document.getElementById('yourLocationLabel').innerHTML = "Your precise location:";
         clearTimeout(geoLocationTimeout);
-    }
-
-    function geoLocationTimeout () {
-        document.getElementById('geolocation').innerHTML = "Couldn't get geolocation"
     }
 
     const url = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${lon}&hourly=precipitation_probability&hourly=temperature_2m`;
