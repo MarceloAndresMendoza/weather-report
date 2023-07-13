@@ -7,7 +7,7 @@ import loading from "../../assets/img/loading.gif";
   <div class="loading" id="loading"><img src={loading} width="60" alt="" /></div>
   <div class="margin infoboxes">
       <div class="infobox">
-        <div class="infobox-title">Your IP is:</div>
+        <div class="infobox-title" id="infobox-ip">Your IP is:</div>
         <div class="infobox-content" id="yourIP"><img src={loading} width="20" alt="" /></div>
       </div>
       <div class="infobox">
@@ -128,5 +128,8 @@ import loading from "../../assets/img/loading.gif";
   }
   .infobox-content {
     font-size: 20px;
+  }
+  #infobox-ip {
+    text-overflow: ellipsis;
   }
 </style>
