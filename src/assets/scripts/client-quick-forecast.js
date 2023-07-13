@@ -76,7 +76,7 @@ const getReverseGeocode = (lat, lon) => {
             // console.log(data);
             // alert(data.address.city + " " + data.address.country);
             document.getElementById("yourLocationLabel").innerHTML = "Your precise location:";
-            const neighbourhood = (data.address.neighbourhood == undefined) ? "" : data.address.neighbourhood + ", ";
+            const neighbourhood = (data.address.road == undefined) ? "" : data.address.road + ", ";
             document.getElementById("yourLocation").innerHTML = neighbourhood + data.address.city + ", " + data.address.country;
             return data;
         })
@@ -111,6 +111,14 @@ function btGetLocation() {
         // ===> Try IP location}
         getIPlocation();
     }
+    // This is only to avoid rage clicking
+    const button = document.getElementById('btGetLocation')
+    button.disabled = true;
+    button.innerText = "Wait ..."
+    setTimeout(function () {
+        button.disabled = false;
+        button.innerText = "Update"
+    }, 1000);
 }
 
 document.getElementById('btGetLocation').addEventListener('click', btGetLocation);
@@ -138,6 +146,8 @@ const getForecast = (lat, lon) => {
         });
 };
 
+let myChart;
+
 const getForecastDataChart = (data, numberOfDataPoints) => {
     // Initialize myData here
     const myData = {
@@ -152,7 +162,11 @@ const getForecastDataChart = (data, numberOfDataPoints) => {
     myData.dataRainValues = data.hourly.precipitation_probability.slice(0, numberOfDataPoints);
 
     const ctx = document.getElementById("forecastChart");
-    new Chart(ctx, {
+
+    if (myChart) {
+        myChart.destroy();
+    }
+    myChart = new Chart(ctx, {
         type: "line",
         data: {
             labels: myData.dataTimeLabels,
@@ -214,7 +228,7 @@ if (savedLocation == null) {
     document.getElementById('latitude').innerHTML = lat;
     document.getElementById('longitude').innerHTML = lon;
     document.getElementById("gotcoords").innerHTML = 'true';
-    document.getElementById("geolocationinfo").innerHTML = 'previously saved data, you can press "update"';
+    document.getElementById("geolocationinfo").innerHTML = 'previously saved data, press "update" to renew';
     getIPlocation(true);
     getReverseGeocode(lat, lon);
 }
