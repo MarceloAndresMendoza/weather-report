@@ -5,36 +5,35 @@ import loading from "../../assets/img/loading.gif";
 <div class="chart">
   <canvas id="forecastChart" class="forecastChart global-hidden"></canvas>
   <div class="loading" id="loading"><img src={loading} width="60" alt="" /></div>
-  <div class="margin">
-    <table>
-      <tr>
-        <th>Your IP is:</th>
-        <td id="yourIP"><img src={loading} width="20" alt="" /></td>
-      </tr>
-      <tr>
-        <th id="yourLocationLabel">Your location:</th>
-        <td id="yourLocation"><img src={loading} width="20" alt="" /></td>
-      </tr>
-      <tr>
-        <th>Current temperature</th>
-        <td id="temp"><img src={loading} width="20" alt="" /></td>
-      </tr>
-      <tr>
-        <th>Rain chance:</th>
-        <td id="rain"><img src={loading} width="20" alt="" /></td>
-      </tr>
-      <tr>
-        <th>Location:<button id="btGetLocation" class="btget">Update</button></th>
-        <td>
+  <div class="margin infoboxes">
+      <div class="infobox">
+        <div class="infobox-title">Your IP is:</div>
+        <div class="infobox-content" id="yourIP"><img src={loading} width="20" alt="" /></div>
+      </div>
+      <div class="infobox">
+        <div class="infobox-title" id="yourLocationLabel">Your location:</div>
+        <div class="infobox-content" id="yourLocation"><img src={loading} width="20" alt="" /></div>
+      </div>
+      <div class="infobox" id="infobox-temp">
+        <div class="infobox-title">Current temperature</div>
+        <div class="infobox-content" id="temp"><img src={loading} width="20" alt="" /></div>
+      </div>
+      <div class="infobox" id="infobox-rain">
+        <div class="infobox-title">Rain chance:</div>
+        <div class="infobox-content" id="rain"><img src={loading} width="20" alt="" /></div>
+      </div>
+      <div class="infobox">
+        <div class="infobox-title">Location:</div>
+        <button id="btGetLocation" class="btget">Update</button>
+        <div  class="infobox-content">
           <div id="latitude"><img src={loading} width="20" alt="" /></div>
           <div id="longitude"><img src={loading} width="20" alt="" /></div>
           <div id="geolocationinfo"></div>
           <div id="gotcoords" class="global-hidden">false</div>
-        </td>
-      </tr>
-    </table>
+        </div>
+      </div>
 
-    <div class="infobox">
+    <div>
       <h2 class="global-hidden">Full URL:</h2>
       <h3 class="global-hidden" id="URL"></h3>
     </div>
@@ -77,11 +76,57 @@ import loading from "../../assets/img/loading.gif";
   .btget {
     margin: 5px 10px;
     padding: 5px 10px;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--color-background-normal);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1);
+  }
+  .btget:hover {
+    background-color: var(--color-accent-dark);
+    color: var(--color-foreground-dark);
   }
 
   #geolocationinfo {
     font-size: 10px;
     font-weight: bold;
-    color:gray;
+    color:black;
+  }
+
+  .infoboxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 700px;
+    gap: 10px;
+  }
+  @media (max-width: 650px) {
+    .infoboxes {
+      justify-content:center;
+    }
+  }
+
+  .infobox {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    min-height: 170px;
+    /* background-color: gray; */
+    box-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: space-between;
+    transition-duration: 1000ms;
+  }
+  .infobox:hover {
+    box-shadow: 2px 2px 50px rgba(0,0,0,0.4);
+    transition-duration: 500ms;
+  }
+  .infobox-title {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-gray);
+  }
+  .infobox-content {
+    font-size: 20px;
   }
 </style>

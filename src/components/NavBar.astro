@@ -35,7 +35,7 @@ const baseUrl = import.meta.env.BASE_URL;
             <span class="link-text">Quick Forecast</span>
             <span class="link-img"><img src={forecast} width="90" /></span>
         </a>
-        <a
+        <a class="global-hidden"
             class={currentPath == baseUrl + "locations" ? "active" : ""}
             href=`${baseUrl}locations`
         >

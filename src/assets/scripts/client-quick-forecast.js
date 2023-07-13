@@ -141,10 +141,15 @@ const getForecast = (lat, lon) => {
         .then((data) => {
             // document.getElementById('data').innerHTML = data.image;
             document.getElementById("URL").innerHTML = url;
-            document.getElementById("temp").innerHTML =
-                data.current_weather.temperature + " °C";
-            document.getElementById("rain").innerHTML =
-                data.hourly.precipitation_probability[1] + " %";
+            document.getElementById("temp").innerHTML = data.current_weather.temperature + " °C";
+            const tempElement = document.getElementById('infobox-temp');
+            const tempValue = (data.current_weather.temperature)*3;
+            tempElement.style.background = `linear-gradient(0deg, #fffcdb ${tempValue-2}%, #f4d87f ${tempValue}%, #fff ${tempValue}%, #fff ${tempValue}%)`;
+            const rainProbability = data.hourly.precipitation_probability[1];
+            // const rainProbability = 45;
+            document.getElementById("rain").innerHTML = rainProbability + " %";
+            const rainElement = document.getElementById('infobox-rain');
+            rainElement.style.background = `linear-gradient(0deg, #dbf2ff ${rainProbability-2}%, #7fd4f4 ${rainProbability}%, #fff ${rainProbability}%, #fff ${rainProbability}%)`;
             getForecastDataChart(data, 24);
             return data;
         });
@@ -179,15 +184,15 @@ const getForecastDataChart = (data, numberOfDataPoints) => {
                     label: "Temperature",
                     data: myData.dataTempValues,
                     borderWidth: 3,
-                    borderColor: '#ff9f40',
-                    backgroundColor: '#cc7d20'
+                    borderColor: '#f4d87f',
+                    backgroundColor: '#faecbe'
                 },
                 {
                     label: "Rain chance %",
                     data: myData.dataRainValues,
                     borderWidth: 3,
-                    borderColor: '#36a2eb',
-                    backgroundColor: '#9BD0F5'
+                    borderColor: '#7fd4f4',
+                    backgroundColor: '#dbf2ff'
                 }
             ],
         },

@@ -33,8 +33,8 @@
 		<meta name="theme-color" content="#ffffff">
 
 		<title>Quick WeatherReport</title>
-	<link rel="stylesheet" href="/weather-report/astro/developer.bba62c0f.css" />
-<link rel="stylesheet" href="/weather-report/astro/index.388009b9.css" /><script type="module" src="/weather-report/astro/hoisted.de8b3e6b.js"></script></head>
+	<link rel="stylesheet" href="/weather-report/astro/developer.8600349c.css" />
+<link rel="stylesheet" href="/weather-report/astro/index.7fb8de4d.css" /><script type="module" src="/weather-report/astro/hoisted.8e89048a.js"></script></head>
 	<body class="astro-OUAMJN2I">
 		<div class="main-layout astro-OUAMJN2I">
 			<div class="navbar astro-YMHDP2RL">
@@ -52,7 +52,7 @@
             <span class="link-text astro-YMHDP2RL">Quick Forecast</span>
             <span class="link-img astro-YMHDP2RL"><img src="/weather-report/astro/forecast.e7690b86.png" width="90" class="astro-YMHDP2RL"></span>
         </a>
-        <a class=" astro-YMHDP2RL" href="/weather-report/locations">
+        <a class="global-hidden astro-YMHDP2RL" class="" href="/weather-report/locations">
             <span class="link-text astro-YMHDP2RL">My locations</span>
             <span class="link-img astro-YMHDP2RL"><img src="/weather-report/astro/compass.f6993a87.png" width="90" class="astro-YMHDP2RL"></span>
         </a>
@@ -73,36 +73,35 @@
 			<div class="chart astro-5CO7B2HZ">
   <canvas id="forecastChart" class="forecastChart global-hidden astro-5CO7B2HZ"></canvas>
   <div class="loading astro-5CO7B2HZ" id="loading"><img src="/weather-report/astro/loading.8ec279aa.gif" width="60" alt="" class="astro-5CO7B2HZ"></div>
-  <div class="margin astro-5CO7B2HZ">
-    <table class="astro-5CO7B2HZ">
-      <tr class="astro-5CO7B2HZ">
-        <th class="astro-5CO7B2HZ">Your IP is:</th>
-        <td id="yourIP" class="astro-5CO7B2HZ"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></td>
-      </tr>
-      <tr class="astro-5CO7B2HZ">
-        <th id="yourLocationLabel" class="astro-5CO7B2HZ">Your location:</th>
-        <td id="yourLocation" class="astro-5CO7B2HZ"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></td>
-      </tr>
-      <tr class="astro-5CO7B2HZ">
-        <th class="astro-5CO7B2HZ">Current temperature</th>
-        <td id="temp" class="astro-5CO7B2HZ"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></td>
-      </tr>
-      <tr class="astro-5CO7B2HZ">
-        <th class="astro-5CO7B2HZ">Rain chance:</th>
-        <td id="rain" class="astro-5CO7B2HZ"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></td>
-      </tr>
-      <tr class="astro-5CO7B2HZ">
-        <th class="astro-5CO7B2HZ">Location:<button id="btGetLocation" class="btget astro-5CO7B2HZ">Update</button></th>
-        <td class="astro-5CO7B2HZ">
+  <div class="margin infoboxes astro-5CO7B2HZ">
+      <div class="infobox astro-5CO7B2HZ">
+        <div class="infobox-title astro-5CO7B2HZ">Your IP is:</div>
+        <div class="infobox-content astro-5CO7B2HZ" id="yourIP"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></div>
+      </div>
+      <div class="infobox astro-5CO7B2HZ">
+        <div class="infobox-title astro-5CO7B2HZ" id="yourLocationLabel">Your location:</div>
+        <div class="infobox-content astro-5CO7B2HZ" id="yourLocation"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></div>
+      </div>
+      <div class="infobox astro-5CO7B2HZ" id="infobox-temp">
+        <div class="infobox-title astro-5CO7B2HZ">Current temperature</div>
+        <div class="infobox-content astro-5CO7B2HZ" id="temp"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></div>
+      </div>
+      <div class="infobox astro-5CO7B2HZ" id="infobox-rain">
+        <div class="infobox-title astro-5CO7B2HZ">Rain chance:</div>
+        <div class="infobox-content astro-5CO7B2HZ" id="rain"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></div>
+      </div>
+      <div class="infobox astro-5CO7B2HZ">
+        <div class="infobox-title astro-5CO7B2HZ">Location:</div>
+        <button id="btGetLocation" class="btget astro-5CO7B2HZ">Update</button>
+        <div class="infobox-content astro-5CO7B2HZ">
           <div id="latitude" class="astro-5CO7B2HZ"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></div>
           <div id="longitude" class="astro-5CO7B2HZ"><img src="/weather-report/astro/loading.8ec279aa.gif" width="20" alt="" class="astro-5CO7B2HZ"></div>
           <div id="geolocationinfo" class="astro-5CO7B2HZ"></div>
           <div id="gotcoords" class="global-hidden astro-5CO7B2HZ">false</div>
-        </td>
-      </tr>
-    </table>
+        </div>
+      </div>
 
-    <div class="infobox astro-5CO7B2HZ">
+    <div class="astro-5CO7B2HZ">
       <h2 class="global-hidden astro-5CO7B2HZ">Full URL:</h2>
       <h3 class="global-hidden astro-5CO7B2HZ" id="URL"></h3>
     </div>
