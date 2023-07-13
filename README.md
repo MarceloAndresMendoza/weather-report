@@ -12,13 +12,17 @@ After adding precise geolocation via user device, i need to show anyway the loca
 > 🧑‍🚀 **Technical details?**
 > When loading, it ask permission to get precise coordinates from your device's gps or geolocation data. If is not granted, or not available, it tries to get the location via IP. Also, the app stores the obtained location data, so the next time the page loads, search first for that on local storage. You can override this data by just clicking the button 'Update'.
 
+## 👀 View the deployed webapp
+
+Take a look on the [project's deployed website](https://marceloandresmendoza.github.io/weather-report/).
+
 ## 🚀 Project Structure
 
 Inside of this project, you'll see the following folders and files:
 
 ``` bash
 /
-├── docs/ [Output Build]
+├── docs/ [Output Build, changed from dist for github pages compatibility]
 ├── src/
 │   ├── pages/
 │   |   ├── index.astro [Main page]
@@ -53,7 +57,7 @@ All commands are run from the root of the project, from a terminal:
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
 | `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run build`           | Build your production site to `./docs/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
