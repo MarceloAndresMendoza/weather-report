@@ -12,6 +12,8 @@ import MainLayout from "../layouts/MainLayout.astro";
 		<p>For this project, i've used Astro Build, a Node.JS environment characterized by use modularization of components called <a href="https://docs.astro.build/en/getting-started/" target="_blank">Component Islands</a>, and it allows to diminish the size of the whole site loading only the fragments I need in each page.</p>
 		<p>It also has client side javascript rendering content, replacing DIVs with IP and weather data, using API endpoints from <a href="https://ipapi.co/api/#introduction" target="_blank">IPAPI.com</a> and <a href="https://open-meteo.com/en/docs" target="_blank">Open Meteo</a> forecast website. Note that endpoints are only for free use, so it has limited rates.</p>
 		<p>After adding precise geolocation via user device, i need to show anyway the location name to the user, so i used the API from <a href="https://geocode.maps.co">Geocode Maps</a> to reverse geocoding, that is the process to get a human readable address from GPS coordinates.</p>
+		<h3>What does the app do... technically speaking</h3>
+		<p>When loading, it ask permission to get precise coordinates from your device's gps or geolocation data. If is not granted, or not available, it tries to get the location via IP. Also, the app stores the obtained location data, so the next time the page loads, search first for that on local storage. You can override this data by just clicking the button 'Update'.</p>
 		<h3>Links</h3>
 		<div class="link-list">
 			<a href="https://github.com/MarceloAndresMendoza/weather-report" target="_blank">This project's source</a>
