@@ -3,6 +3,8 @@
 Marcelo Andrés Mendoza
 ¡Thank you by stopping by! I am a FullStack MERN developer in training at UDD, Chile.
 
+This webapp is intended to be a lightweight and quick way to view today's forecast for your location in a dashboard format, using chart.js framework to display at glance the projected data without distractions.
+
 For this project, i've used Astro Build, a Node.JS environment characterized by use modularization of components called [Component Islands](https://docs.astro.build/en/getting-started/), and it allows to diminish the size of the whole site loading only the fragments I need in each page.
 
 It also has client side javascript rendering content, replacing DIVs with IP and weather data, using API endpoints from [IPAPI.com](https://ipapi.co/api/#introduction) and [Open Meteo](https://open-meteo.com/en/docs) forecast website. Note that endpoints are only for free use, so it has limited rates.
