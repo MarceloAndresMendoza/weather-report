@@ -1,35 +1,51 @@
-# Astro Starter Kit: Minimal
+# Quick Weather Report
 
-```
-npm create astro@latest -- --template minimal
-```
+Marcelo Andrés Mendoza
+¡Thank you by stopping by! I am a FullStack MERN developer in training at UDD, Chile.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+For this project, i've used Astro Build, a Node.JS environment characterized by use modularization of components called [Component Islands](https://docs.astro.build/en/getting-started/), and it allows to diminish the size of the whole site loading only the fragments I need in each page.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+It also has client side javascript rendering content, replacing DIVs with IP and weather data, using API endpoints from [IPAPI.com](https://ipapi.co/api/#introduction) and [Open Meteo](https://open-meteo.com/en/docs) forecast website. Note that endpoints are only for free use, so it has limited rates.
+
+After adding precise geolocation via user device, i need to show anyway the location name to the user, so i used the API from [Geocode Maps](https://geocode.maps.co/) to reverse geocoding, that is the process to get a human readable address from GPS coordinates.
+
+> 🧑‍🚀 **Technical details?**
+> When loading, it ask permission to get precise coordinates from your device's gps or geolocation data. If is not granted, or not available, it tries to get the location via IP. Also, the app stores the obtained location data, so the next time the page loads, search first for that on local storage. You can override this data by just clicking the button 'Update'.
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of this project, you'll see the following folders and files:
 
-```
+``` bash
 /
-├── public/
+├── docs/ [Output Build]
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── pages/
+│   |   ├── index.astro [Main page]
+│   |   ├── developer.astro [Developer info]
+│   |   └── locations.astro [Custom locations (Work in progress)]
+│   ├── components/ [App reusable components]
+│   |   ├── charts/
+│   |   └── ...
+│   ├── layouts/
+│   |   └── MainLayout.astro [Main html container]
+│   ├── assets/
+│   |   ├── img/
+│   |   ├── scripts/
+│   |   └── styles/
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Most of the folders are self explanatory on what they do. The pages uses the MainLayout container, and each page has some local pure css styling, but some classes are located on the style.css file on assets folder.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+The script is located on the scripts folder, and is sent to the user as is when loading the site, since [Astro optimizes the site](https://docs.astro.build/en/getting-started/) and disposes most of javascript for a by default Zero JS lightweight experience.
 
 ## 🧞 Commands
+
+You can get this project via git clone
+``` bash
+git clone https://marceloandresmendoza/weather-report
+```
 
 All commands are run from the root of the project, from a terminal:
 
@@ -41,7 +57,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

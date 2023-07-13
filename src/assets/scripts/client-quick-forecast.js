@@ -84,6 +84,10 @@ const getReverseGeocode = (lat, lon) => {
 
 function btGetLocation() {
     // User presses the 'update' button.
+
+    // Delete saved data on local storage
+    localStorage.clear();
+    // Try to get geolocation data from device
     if ("geolocation" in navigator) {
         // Geolocation is available
         let geoLocationTimeout = setTimeout(() => {
