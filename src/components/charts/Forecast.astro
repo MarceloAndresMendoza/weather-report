@@ -12,7 +12,7 @@ import loading from "../../assets/img/loading.gif";
         <td id="yourIP"><img src={loading} width="20" alt="" /></td>
       </tr>
       <tr>
-        <th id="yourLocationLabel">Your aproximate location:</th>
+        <th id="yourLocationLabel">Your location:</th>
         <td id="yourLocation"><img src={loading} width="20" alt="" /></td>
       </tr>
       <tr>
@@ -24,12 +24,12 @@ import loading from "../../assets/img/loading.gif";
         <td id="rain"><img src={loading} width="20" alt="" /></td>
       </tr>
       <tr>
-        <th>Geolocation:<button onclic="btGetLocation" class="btget">Get</button></th>
+        <th>Location:<button id="btGetLocation" class="btget">Update</button></th>
         <td>
-          <div class="geolocation">
-            <div id="latitude"></div>
-            <div id="longitude"></div>
-          </div><img src={loading} width="20" alt="" />
+          <div id="latitude"><img src={loading} width="20" alt="" /></div>
+          <div id="longitude"><img src={loading} width="20" alt="" /></div>
+          <div id="geolocationinfo"></div>
+          <div id="gotcoords" class="global-hidden">false</div>
         </td>
       </tr>
     </table>
@@ -61,6 +61,7 @@ import loading from "../../assets/img/loading.gif";
 
   th {
     text-align: start;
+    min-width: 200px;
   }
 
   .loading {
@@ -77,8 +78,10 @@ import loading from "../../assets/img/loading.gif";
     margin: 5px 10px;
     padding: 5px 10px;
   }
-  .geolocation {
-    display: flex;
-    flex-direction: row;
+
+  #geolocationinfo {
+    font-size: 10px;
+    font-weight: bold;
+    color:gray;
   }
 </style>
