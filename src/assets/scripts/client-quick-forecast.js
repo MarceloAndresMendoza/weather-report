@@ -1,4 +1,26 @@
 // document.getElementById("Title").innerHTML="Welcome"; // Just a testing purpose script
+// Marcelo Mendoza 2023 - https://github.com/MarceloAndresMendoza
+
+// == APP FLOW ==
+// App starts
+// └ Saved location from localStorage?
+//  ├ Yes: [Use this instead] => [Get Weather Report (Saved location)]
+//  └ No: First time app loaded (Suggest press the getLocation button<)
+//   └ [GetLocation Button] Try to get Geolocation
+//     ├ Got coordinates => [Get Weather Report (Exact location)]
+//     └ Did'nt got coordinates
+//      └ Try to get IP from IPAPI.com
+//       ├ Got coordinates => [Get Weather Report (Aproximate location)]
+//       └ Didn't got IP => [Manual location set]
+const savedLocation = localStorage.getItem(savedLocation);
+if (savedLocation) {
+    // There is a saved location
+    
+} else {
+    // First time app load
+    
+}
+
 
 const getIP = () => {
     const url = "https://ipapi.co/json/";
@@ -41,7 +63,8 @@ const getForecast = (lat, lon) => {
     function gotPosition(glat, glon) {
         console.log('Got position:' + glat.toFixed(2) + ", " + glon.toFixed(2));
         // console.log(lat + " " + lon);
-        document.getElementById('geolocation').innerHTML = glat.toFixed(2) + ", " + glon.toFixed(2);
+        document.getElementById('latitude').innerHTML = glat.toFixed(2);
+        document.getElementById('longitude').innerHTML =glon.toFixed(2);
         lat = glat;
         lon = glon;
         document.getElementById('yourLocationLabel').innerHTML = "Your precise location:";

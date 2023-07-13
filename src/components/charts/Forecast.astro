@@ -24,8 +24,13 @@ import loading from "../../assets/img/loading.gif";
         <td id="rain"><img src={loading} width="20" alt="" /></td>
       </tr>
       <tr>
-        <th>Geolocation:</th>
-        <td id="geolocation"><img src={loading} width="20" alt="" /></td>
+        <th>Geolocation:<button onclic="btGetLocation" class="btget">Get</button></th>
+        <td>
+          <div class="geolocation">
+            <div id="latitude"></div>
+            <div id="longitude"></div>
+          </div><img src={loading} width="20" alt="" />
+        </td>
       </tr>
     </table>
 
@@ -61,5 +66,19 @@ import loading from "../../assets/img/loading.gif";
   .loading {
     text-align: center;
     margin: 40px;
+  }
+  #latitude::before {
+    content: 'Lat: '
+  }
+  #longitude::before {
+    content: 'Lon: '
+  }
+  .btget {
+    margin: 5px 10px;
+    padding: 5px 10px;
+  }
+  .geolocation {
+    display: flex;
+    flex-direction: row;
   }
 </style>
