@@ -76,7 +76,8 @@ const getReverseGeocode = (lat, lon) => {
             // console.log(data);
             // alert(data.address.city + " " + data.address.country);
             document.getElementById("yourLocationLabel").innerHTML = "Your precise location:";
-            document.getElementById("yourLocation").innerHTML = data.address.city + ", " + data.address.country;
+            const neighbourhood = (data.address.neighbourhood == undefined) ? "" : data.address.neighbourhood + ", ";
+            document.getElementById("yourLocation").innerHTML = neighbourhood + data.address.city + ", " + data.address.country;
             return data;
         })
 }
